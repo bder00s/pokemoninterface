@@ -4,13 +4,14 @@ import java.util.List;
 public class ElectricPokemon extends Pokemon {
 
     private String type = "electric";
+    private int amountOfVolt;
 
     List<String> attacks = Arrays.asList("thunderpunch", "electroball", "thunder", "volttackle");
 
 
-    public ElectricPokemon(String name, int level, int hp, String food, String sound) {
+    public ElectricPokemon(String name, int level, int hp, String food, String sound, int amountOfVolt) {
         super(name, level, hp, food, sound);
-
+        this.amountOfVolt = amountOfVolt;
 
     }
 
@@ -46,7 +47,7 @@ public class ElectricPokemon extends Pokemon {
     }
 
     void thunder(Pokemon name, Pokemon enemy) {
-        System.out.println(getName() + " attacks " + enemy.getName() + " with thunder! ~~~/~~/~~/ ");
+        System.out.println(getName() + " attacks " + enemy.getName() + " with thunder of " + getAmountOfVolt() + " volt!! ~~~/~~/~~/  ");
         switch (enemy.getType()) {
             case "grass" ->
                     System.out.println(enemy.getName() + " is a grass type and loses 20 hp. He now has " + (enemy.getHp() - 20) + " left. " + name.getName() + " gets a 20HP boost from the thunder! it's now:  " + (name.getHp() + 20));
@@ -61,8 +62,12 @@ public class ElectricPokemon extends Pokemon {
     }
 
     void voltTackle(Pokemon name, Pokemon enemy) {
-        System.out.println(getName() + " attacks " + enemy.getName() + " with voltTackle! >>>><<<< ");
+        System.out.println(getName() + " attacks " + enemy.getName() + " with voltTackle of " + getAmountOfVolt()+ " volt!! >>>><<<< ");
         electricAttack(enemy);
+    }
+
+    public int getAmountOfVolt(){
+        return amountOfVolt;
     }
 
 }

@@ -3,16 +3,18 @@ import java.util.List;
 
 public class FirePokemon extends Pokemon {
 
-private String type = "fire";
-    List<String> attacks = Arrays.asList("firelash", "flamethrower", "pyroball", "inferno" );
+    private String type = "fire";
+    private String fireHeat;
 
-    public FirePokemon(String name, int level, int hp, String food, String sound) {
+    List<String> attacks = Arrays.asList("firelash", "flamethrower", "pyroball", "inferno");
+
+    public FirePokemon(String name, int level, int hp, String food, String sound, String fireHeat) {
         super(name, level, hp, food, sound);
-
+      this.fireHeat = fireHeat;
 
     }
 
-    List<String>getAttacks() {
+    List<String> getAttacks() {
         return attacks;
     }
 
@@ -20,7 +22,7 @@ private String type = "fire";
         return type;
     }
 
-    public void fireAttack(Pokemon enemy){
+    public void fireAttack(Pokemon enemy) {
         switch (enemy.getType()) {
             case "grass" ->
                     System.out.println(enemy.getName() + " is a grass type and loses 50 hp!! He now has " + (enemy.getHp() - 50) + " left.");
@@ -49,7 +51,11 @@ private String type = "fire";
     }
 
     void inferno(Pokemon name, Pokemon enemy) {
-        System.out.println(getName() + " attacks " + enemy.getName() + " with inferno! ^^^^^^ ");
+        System.out.println(getName() + " attacks " + enemy.getName() + " with" + getFireHeat() + " inferno! ^^^^^^ ");
         fireAttack(enemy);
+    }
+
+    public String getFireHeat(){
+        return fireHeat;
     }
 }

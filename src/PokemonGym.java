@@ -15,6 +15,7 @@ public interface PokemonGym {
 
     Pokemon choosePokemon(PokemonTrainer trainer);
 
+
     int randomAttackByGymOwner();
 
     String chooseAttackPlayer(Pokemon p);
@@ -24,4 +25,9 @@ public interface PokemonGym {
     void gymOwnerAttacks(Pokemon gymPokemon, Pokemon pokemon);
 
     void attackOrChange(Pokemon pokemon, Pokemon gymPokemon, PokemonTrainer trainer, PokemonGymOwner gym);
+
+
+
 }
+
+

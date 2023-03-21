@@ -3,14 +3,18 @@ import java.util.List;
 
 public class GrassPokemon extends Pokemon {
 
+
+
     private String type = "grass";
+    private String poisonStrenght;
+
+
     List<String> attacks = Arrays.asList("leafstorm", "solarbeam", "leechseed", "leaveblade");
 
 
-    public GrassPokemon(String name, int level, int hp, String food, String sound) {
+    public GrassPokemon(String name, int level, int hp, String food, String sound, String poisonStrength) {
         super(name, level, hp, food, sound);
-
-
+        this.poisonStrenght = poisonStrength;
     }
 
 
@@ -30,7 +34,7 @@ public class GrassPokemon extends Pokemon {
             case "water" ->
                     System.out.println(enemy.getName() + " is a water type and loses 10 hp. He now has " + (enemy.getHp() - 10) + " left.");
             case "fire" ->
-                    System.out.println(enemy.getName() + "is a fire type and loses 20 hp. He now has " + (enemy.getHp() - 20) + " left.");
+                    System.out.println(enemy.getName() + " is a fire type and loses 20 hp. He now has " + (enemy.getHp() - 20) + " left.");
             case "electric" ->
                     System.out.println(enemy.getName() + " is an electric type and loses 50 hp. He now has " + (enemy.getHp() - 50) + " left.");
         }
@@ -52,7 +56,7 @@ public class GrassPokemon extends Pokemon {
     }
 
     public void leechSeed(Pokemon name, Pokemon enemy) {
-        System.out.println(getName() + " attacks " + enemy.getName() + " with leechSeed");
+        System.out.println(getName() + " attacks " + enemy.getName() + " with leechSeed. The poison is " + getPoisonStrenght() + " deadly!!");
 
         switch (enemy.getType()) {
             case "grass" ->
@@ -69,5 +73,9 @@ public class GrassPokemon extends Pokemon {
     public void leaveBlade(Pokemon name, Pokemon enemy) {
         System.out.println(getName() + " attacks " + enemy.getName() + " with leaveBlade >>>>>>>");
         grassAttack(enemy);
+    }
+
+    public String getPoisonStrenght(){
+        return poisonStrenght;
     }
 }

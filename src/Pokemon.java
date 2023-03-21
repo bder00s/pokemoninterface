@@ -20,6 +20,9 @@ public abstract class Pokemon {
 
     }
 
+    public void feedPokemon(){
+        System.out.println("You're feeding your " + getName() + " some " + getFood() + ". He likes it and gains a HP boost from 10HP. Total hp: " + (getHp() + 10));
+    }
 
     public String getName() {
         return name;
@@ -62,4 +65,6 @@ public abstract class Pokemon {
     }
 
     public abstract String getType();
+
+
 }
