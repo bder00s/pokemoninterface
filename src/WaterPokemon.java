@@ -62,7 +62,7 @@ public class WaterPokemon extends Pokemon {
         switch (enemy.getType()) {
             case "grass" -> {
                 enemy.setHp(getHp() + 10);
-                System.out.println(enemy.getName() + " is a grass type and gains hp from the raindance!" + enemy.getHp());
+                System.out.println(enemy.getName() + " is a grass type and gains hp from the raindance! He now has: " + enemy.getHp());
             }
             case "water" -> {
                 enemy.setHp(getHp() - 5);

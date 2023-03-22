@@ -109,7 +109,7 @@ public class PokemonGymImpl implements PokemonGym {
     @Override
     public int randomAttackByGymOwner() {
         Random rand = new Random();
-        int maxAttacks = 5;
+        int maxAttacks = 4;
         return rand.nextInt(maxAttacks);
     }
 
