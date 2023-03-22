@@ -16,6 +16,7 @@ public interface PokemonGym {
     Pokemon choosePokemon(PokemonTrainer trainer);
 
 
+
     int randomAttackByGymOwner();
 
     String chooseAttackPlayer(Pokemon p);

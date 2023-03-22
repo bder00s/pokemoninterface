@@ -4,14 +4,18 @@ import java.util.List;
 public class FirePokemon extends Pokemon {
 
     private String type = "fire";
-    private String fireHeat;
 
     List<String> attacks = Arrays.asList("firelash", "flamethrower", "pyroball", "inferno");
 
-    public FirePokemon(String name, int level, int hp, String food, String sound, String fireHeat) {
+    public FirePokemon(String name, int level, int hp, String food, String sound) {
         super(name, level, hp, food, sound);
-      this.fireHeat = fireHeat;
 
+
+    }
+
+    public FirePokemon(String name, int level, int hp, String food, String sound, String type) {
+        super(name, level, hp, food, sound);
+        this.type = type;
     }
 
     List<String> getAttacks() {
@@ -24,14 +28,22 @@ public class FirePokemon extends Pokemon {
 
     public void fireAttack(Pokemon enemy) {
         switch (enemy.getType()) {
-            case "grass" ->
-                    System.out.println(enemy.getName() + " is a grass type and loses 50 hp!! He now has " + (enemy.getHp() - 50) + " left.");
-            case "water" ->
-                    System.out.println(enemy.getName() + " is a water type and loses 20 hp. He now has " + (enemy.getHp() - 20) + " left.");
-            case "fire" ->
-                    System.out.println(enemy.getName() + "is also a fire type and loses only 5 hp. He now has " + (enemy.getHp() - 5) + " left.");
-            case "electric" ->
-                    System.out.println(enemy.getName() + " is an electric type and loses 10 hp. He now has " + (enemy.getHp() - 10) + " left.");
+            case "grass" -> {
+                enemy.setHp(getHp() - 50);
+                System.out.println(enemy.getName() + " is a grass type and loses 50 hp!! He now has " + enemy.getHp() + " left.");
+            }
+            case "water" -> {
+                enemy.setHp(getHp() - 20);
+                System.out.println(enemy.getName() + " is a water type and loses 20 hp. He now has " + enemy.getHp() + " left.");
+            }
+            case "fire" -> {
+                enemy.setHp(getHp() - 5);
+                System.out.println(enemy.getName() + "is also a fire type and loses only 5 hp. He now has " + enemy.getHp() + " left.");
+            }
+            case "electric" -> {
+                enemy.setHp(getHp() - 10);
+                System.out.println(enemy.getName() + " is an electric type and loses 10 hp. He now has " + enemy.getHp() + " left.");
+            }
         }
     }
 
@@ -41,7 +53,7 @@ public class FirePokemon extends Pokemon {
     }
 
     void flameThrower(Pokemon name, Pokemon enemy) {
-        System.out.println(getName() + " attacks " + enemy.getName() + " with flameThrower! »»»»»»» ^^^^  ");
+        System.out.println(getName() + " attacks " + enemy.getName() + " with flameThrower! >>>>> ^^^^  ");
         fireAttack(enemy);
     }
 
@@ -51,11 +63,8 @@ public class FirePokemon extends Pokemon {
     }
 
     void inferno(Pokemon name, Pokemon enemy) {
-        System.out.println(getName() + " attacks " + enemy.getName() + " with" + getFireHeat() + " inferno! ^^^^^^ ");
+        System.out.println(getName() + " attacks " + enemy.getName() + " with inferno! ^^^^^^ ");
         fireAttack(enemy);
     }
 
-    public String getFireHeat(){
-        return fireHeat;
-    }
 }

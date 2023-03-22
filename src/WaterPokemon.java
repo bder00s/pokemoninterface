@@ -4,7 +4,7 @@ import java.util.List;
 public class WaterPokemon extends Pokemon {
 
     private String type = "water";
-    private String typeOfWater;
+
 
     List<String> attacks = Arrays.asList("surf", "hydropump", "hydrocanon", "raindance");
 
@@ -12,9 +12,9 @@ public class WaterPokemon extends Pokemon {
         return attacks;
     }
 
-    public WaterPokemon(String name, int level, int hp, String food, String sound, String typeOfWater) {
+    public WaterPokemon(String name, int level, int hp, String food, String sound) {
         super(name, level, hp, food, sound);
-        this.typeOfWater = typeOfWater;
+
     }
 
     public String getType() {
@@ -23,19 +23,27 @@ public class WaterPokemon extends Pokemon {
 
     public void waterAttack(Pokemon enemy) {
         switch (enemy.getType()) {
-            case "grass" ->
-                    System.out.println(enemy.getName() + " is a grass type and loses 10 hp. He now has " + (enemy.getHp() - 10) + " left.");
-            case "water" ->
-                    System.out.println(enemy.getName() + " is also a water type and only loses 5 hp.  He now has " + (enemy.getHp() - 5) + " left.");
-            case "fire" ->
-                    System.out.println(enemy.getName() + "is a fire type and loses 50 hp!! He now has " + (enemy.getHp() - 50) + " left.");
-            case "electric" ->
-                    System.out.println(enemy.getName() + " is an electric type and loses 20 hp. He now has " + (enemy.getHp() - 20) + " left.");
+            case "grass" -> {
+                enemy.setHp(getHp() - 10);
+                System.out.println(enemy.getName() + " is a grass type and loses 10 hp. He now has " + enemy.getHp() + " left.");
+            }
+            case "water" -> {
+                enemy.setHp(getHp() - 5);
+                System.out.println(enemy.getName() + " is also a water type and only loses 5 hp.  He now has " + enemy.getHp() + " left.");
+            }
+            case "fire" -> {
+                enemy.setHp(getHp() - 50);
+                System.out.println(enemy.getName() + "is a fire type and loses 50 hp!! He now has " + enemy.getHp() + " left.");
+            }
+            case "electric" -> {
+                enemy.setHp(getHp() - 20);
+                System.out.println(enemy.getName() + " is an electric type and loses 20 hp. He now has " + enemy.getHp() + " left.");
+            }
         }
     }
 
     void surf(Pokemon name, Pokemon enemy) {
-        System.out.println(getName() + " attacks " + enemy.getName() + " with surfing on " + getTypeOfWater()+ " water! ~ ~ ~ ~ ~ ");
+        System.out.println(getName() + " attacks " + enemy.getName() + " with surfing on water! ~ ~ ~ ~ ~ ");
         waterAttack(enemy);
     }
 
@@ -50,20 +58,25 @@ public class WaterPokemon extends Pokemon {
     }
 
     void rainDance(Pokemon name, Pokemon enemy) {
-        System.out.println(getName() + " attacks " + enemy.getName() + " with " + getTypeOfWater()+ " raindance '```'`'`''`'`'`'`'");
+        System.out.println(getName() + " attacks " + enemy.getName() + " with raindance '```'`'`''`'`'`'`'");
         switch (enemy.getType()) {
-            case "grass" ->
-                    System.out.println(enemy.getName() + " is a grass type and gains hp from the raindance!" + (enemy.getHp() + 10));
-            case "water" ->
-                    System.out.println(enemy.getName() + " is also a water type and only loses 5 hp.  He now has " + (enemy.getHp() - 5) + " left.");
-            case "fire" ->
-                    System.out.println(enemy.getName() + "is a fire type and loses 50 hp!! He now has " + (enemy.getHp() - 50) + " left.");
-            case "electric" ->
-                    System.out.println(enemy.getName() + " is an electric type. Raindance has no effect on " + enemy.getName());
+            case "grass" -> {
+                enemy.setHp(getHp() + 10);
+                System.out.println(enemy.getName() + " is a grass type and gains hp from the raindance!" + enemy.getHp());
+            }
+            case "water" -> {
+                enemy.setHp(getHp() - 5);
+                System.out.println(enemy.getName() + " is also a water type and only loses 5 hp.  He now has " + enemy.getHp() + " left.");
+            }
+            case "fire" -> {
+                enemy.setHp(getHp() - 50);
+                System.out.println(enemy.getName() + "is a fire type and loses 50 hp!! He now has " + enemy.getHp() + " left.");
+            }
+            case "electric" -> {
+                System.out.println(enemy.getName() + " is an electric type. Raindance has no effect on " + enemy.getName());
+            }
         }
     }
 
-    public String getTypeOfWater(){
-        return typeOfWater;
-    }
+
 }
